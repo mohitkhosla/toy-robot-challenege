@@ -63,7 +63,7 @@ export const processCommand = (command) => {
  */
 export const main = () => {
   console.log(
-    'Enter commands for the toy robot (or type "QUIT" to exit).\n' +
+    'Enter commands for the Toy Robot (or type "QUIT" to exit).\n' +
       "Commands: PLACE X,Y,FACING | MOVE | LEFT | RIGHT | REPORT\n" +
       "Example: PLACE 0,0,NORTH\n"
   );
