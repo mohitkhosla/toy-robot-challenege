@@ -36,7 +36,7 @@ This repository contains an MVC implementation of the Toy Robot Challenge in Jav
     ```bash
     cd toy-robot-challenge
     ```
-3. Install dependencies:
+3. Install dependencies (There are none for this application, however it's a good approach to have it for version control):
     ```bash
     npm install
     ```
