@@ -2,6 +2,26 @@
 
 This repository contains an MVC implementation of the Toy Robot Challenge in JavaScript. The challenge involves controlling a toy robot on a grid, allowing it to move, turn, and report its position.
 
+## Directory Structure
+```tree
+.
+└── toy-robot-challenge/
+    ├── src/
+    │   ├── model/
+    │   │   └── robot-model.js
+    │   ├── view/
+    │   │   └── robot-view.js
+    │   ├── controller/
+    │   │   └── robot-controller.js
+    │   └── utils/
+    │       └── constants.js
+    ├── app.js
+    ├── package.json
+    ├── package-lock.json
+    ├── .gitignore
+    └── README.md
+```
+
 ## How to Run
 
 ### Prerequisites
