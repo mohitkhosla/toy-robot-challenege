@@ -73,6 +73,21 @@ function report() {
   console.log(`Output: ${position.x},${position.y},${position.facing}`);
 }
 
+function handlePlaceCommand(placeCommandArgs) {
+    if (placeCommandArgs.length !== 3) {
+        console.log('Invalid PLACE command format.');
+        return;
+      }
+      const x = parseInt(placeCommandArgs[0]);
+      const y = parseInt(placeCommandArgs[1]);
+      const facing = placeCommandArgs[2];
+      if (isValidPosition(x, y)) {
+        place(x, y, facing);
+      } else {
+        console.log('Invalid PLACE command. Robot will fall off the grid.');
+      }
+}
+
 function processCommand(command) {
     // It allows for splitting the string based on both spaces and commas.
     const args = command.trim().split(/[,\s]+/);
@@ -86,19 +101,8 @@ function processCommand(command) {
   
     switch (action) {
       case 'PLACE':
-        const placeArgs = args.slice(1);
-        if (placeArgs.length !== 3) {
-          console.log('Invalid PLACE command format.');
-          return;
-        }
-        const x = parseInt(placeArgs[0]);
-        const y = parseInt(placeArgs[1]);
-        const facing = placeArgs[2];
-        if (isValidPosition(x, y)) {
-          place(x, y, facing);
-        } else {
-          console.log('Invalid PLACE command. Robot will fall off the grid.');
-        }
+        const placeCommandArgs = args.slice(1);
+        handlePlaceCommand(placeCommandArgs)
         break;
       case 'MOVE':
         move();
