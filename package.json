@@ -1,0 +1,21 @@
+{
+  "type": "module",
+  "name": "toy-robot-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohitkhosla/toy-robot-challenge.git"
+  },
+  "keywords": [],
+  "author": "Mohit Khosla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohitkhosla/toy-robot-challenge/issues"
+  },
+  "homepage": "https://github.com/mohitkhosla/toy-robot-challenge#readme"
+}
