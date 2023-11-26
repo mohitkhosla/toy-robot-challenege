@@ -74,7 +74,8 @@ function report() {
 }
 
 function processCommand(command) {
-    const args = command.trim().split(/\s+/);
+    // It allows for splitting the string based on both spaces and commas.
+    const args = command.trim().split(/[,\s]+/);
 
     if (args.length === 0) {
       console.log('Invalid command.');
@@ -137,7 +138,7 @@ function startRobot() {
           rl.close();
         } else {
           processCommand(command);
-          processInput(); // Continue to the next input
+          processInput();
         }
       }
     );
