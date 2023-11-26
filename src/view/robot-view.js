@@ -1,4 +1,4 @@
-import readline from 'readline';
+import readline from "readline";
 
 /**
  * Creates a NodeJS readline interface to handle command line inputs
@@ -13,12 +13,12 @@ const rl = readline.createInterface({
  * @param {callback function} command - The callback function to handle user input
  */
 export const getInput = (command) => {
-  rl.question('> ', command);
-}
+  rl.question("> ", command);
+};
 
 /**
  * Closes the readline interface, and ends the user input process
  */
 export const closeInput = () => {
   rl.close();
-}
+};
