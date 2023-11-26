@@ -1,6 +1,10 @@
 import * as RobotModel from '../model/robot-model.js';
 import * as RobotView from '../view/robot-view.js';
 
+/**
+ * Handles the PLACE command by validating and updating the robot's position
+ * @param {array} placeCommandArgs - The arguments for the PLACE command
+ */
 const handlePlaceCommand = (placeCommandArgs) => {
   if (placeCommandArgs.length !== 3) {
     console.log('Invalid PLACE command format.');
@@ -16,6 +20,10 @@ const handlePlaceCommand = (placeCommandArgs) => {
   }
 }
 
+/**
+ * Processes the user command and executes the corresponding action
+ * @param {string} command - User input command
+ */
 export const processCommand = (command) => {
   // It allows for splitting the string based on both spaces and commas.
   const args = command.trim().split(/[,\s]+/);
@@ -50,6 +58,9 @@ export const processCommand = (command) => {
   }
 }
 
+/**
+ * Entry point of the application that initiates the toy robot
+ */
 export const main = () => {
   console.log(
     'Enter commands for the toy robot (or type "QUIT" to exit).\n' +
