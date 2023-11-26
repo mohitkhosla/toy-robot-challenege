@@ -1,5 +1,5 @@
-import * as robotModel from '../model/robot-model.js';
-import * as robotView from '../view/robot-view.js';
+import * as RobotModel from '../model/robot-model.js';
+import * as RobotView from '../view/robot-view.js';
 
 const handlePlaceCommand = (placeCommandArgs) => {
   if (placeCommandArgs.length !== 3) {
@@ -8,15 +8,16 @@ const handlePlaceCommand = (placeCommandArgs) => {
   }
   const x = parseInt(placeCommandArgs[0]);
   const y = parseInt(placeCommandArgs[1]);
-  const facing = placeCommandArgs[2];
-  if (robotModel.isValidPosition(x, y)) {
-    robotModel.place(x, y, facing);
+  const facing = placeCommandArgs[2].toUpperCase();
+  if (RobotModel.isValidPosition(x, y) && RobotModel.isValidDirection(facing)) {
+    RobotModel.place(x, y, facing);
   } else {
     console.log('Invalid PLACE command.');
   }
 }
 
 export const processCommand = (command) => {
+  // It allows for splitting the string based on both spaces and commas.
   const args = command.trim().split(/[,\s]+/);
 
   if (args.length === 0) {
@@ -32,16 +33,16 @@ export const processCommand = (command) => {
       handlePlaceCommand(placeCommandArgs);
       break;
     case 'MOVE':
-      robotModel.move();
+      RobotModel.move();
       break;
     case 'LEFT':
-      robotModel.left();
+      RobotModel.left();
       break;
     case 'RIGHT':
-      robotModel.right();
+      RobotModel.right();
       break;
     case 'REPORT':
-      robotModel.report();
+      RobotModel.report();
       break;
     default:
       console.log('Invalid command.');
@@ -49,7 +50,7 @@ export const processCommand = (command) => {
   }
 }
 
-export const startRobot = () => {
+export const main = () => {
   console.log(
     'Enter commands for the toy robot (or type "QUIT" to exit).\n' +
       'Commands: PLACE X,Y,FACING | MOVE | LEFT | RIGHT | REPORT\n' +
@@ -57,9 +58,9 @@ export const startRobot = () => {
   );
 
   const processInput = () => {
-    robotView.getInput((command) => {
+    RobotView.getInput((command) => {
       if (command.trim().toUpperCase() === 'QUIT') {
-        robotView.closeInput();
+        RobotView.closeInput();
       } else {
         processCommand(command);
         processInput();

@@ -1,3 +1,3 @@
-import { startRobot } from './src/controller/robot-controller.js';
+import { main } from './src/controller/robot-controller.js';
 
-startRobot();
+main();

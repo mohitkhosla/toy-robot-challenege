@@ -1,3 +1,5 @@
+import { DIRECTIONS } from '../utils/constants.js'
+
 let position = {
   x: null,
   y: null,
@@ -12,10 +14,10 @@ export const move = () => {
   let newX = position.x;
   let newY = position.y;
 
-  if (position.facing === "NORTH") newY++;
-  else if (position.facing === "EAST") newX++;
-  else if (position.facing === "SOUTH") newY--;
-  else if (position.facing === "WEST") newX--;
+  if (position.facing === DIRECTIONS.NORTH) newY++;
+  else if (position.facing === DIRECTIONS.EAST) newX++;
+  else if (position.facing === DIRECTIONS.SOUTH) newY--;
+  else if (position.facing === DIRECTIONS.WEST) newX--;
 
   if (isValidPosition(newX, newY)) {
     position.x = newX;
@@ -27,34 +29,34 @@ export const move = () => {
 
 export const left = () => {
   switch (position.facing) {
-    case "NORTH":
-      position.facing = "WEST";
+    case DIRECTIONS.NORTH:
+      position.facing = DIRECTIONS.WEST;
       break;
-    case "EAST":
-      position.facing = "NORTH";
+    case DIRECTIONS.WEST:
+      position.facing = DIRECTIONS.SOUTH;
       break;
-    case "SOUTH":
-      position.facing = "EAST";
+    case DIRECTIONS.SOUTH:
+      position.facing = DIRECTIONS.EAST;
       break;
-    case "WEST":
-      position.facing = "SOUTH";
+    case DIRECTIONS.EAST:
+      position.facing = DIRECTIONS.NORTH;
       break;
   }
 }
 
 export const right = () => {
   switch (position.facing) {
-    case "NORTH":
-      position.facing = "EAST";
+    case DIRECTIONS.NORTH:
+      position.facing = DIRECTIONS.EAST;
       break;
-    case "EAST":
-      position.facing = "SOUTH";
+    case DIRECTIONS.EAST:
+      position.facing = DIRECTIONS.SOUTH;
       break;
-    case "SOUTH":
-      position.facing = "WEST";
+    case DIRECTIONS.SOUTH:
+      position.facing = DIRECTIONS.WEST;
       break;
-    case "WEST":
-      position.facing = "NORTH";
+    case DIRECTIONS.WEST:
+      position.facing = DIRECTIONS.NORTH;
       break;
   }
 }
@@ -65,4 +67,9 @@ export const report = () => {
 
 export const isValidPosition = (x, y) => {
   return x >= 0 && x <= 4 && y >= 0 && y <= 4;
+}
+
+export const isValidDirection = (direction) => {
+  const validDirections = Object.keys(DIRECTIONS);
+  return validDirections.includes(direction);
 }
